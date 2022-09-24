@@ -1,48 +1,8 @@
 const http = require("http");
 
-const server = http.createServer((req, res) => {
-    const { url } = req;
+const route = require("./routes");
 
-    if (url === "/") {
-        res.write(`
-            <html>
-                <head>
-                    <title>Home Page</title>
-                </head>
-                <body>
-                    <h1>Home</h1>
-                </body>
-            </html>
-        `);
-        return res.end();
-    }
-
-    if (url === "/user") {
-        res.write(`
-            <html>
-                <head>
-                    <title>User Page</title>
-                </head>
-                <body>
-                    <h1>User Page</h1>
-                </body>
-            </html>
-        `);
-        return res.end();
-    }
-
-    res.write(`
-        <html>
-            <head>
-                <title>404 Page</title>
-            </head>
-            <body>
-                <h1>You're Lost</h1>
-                <h2>Page Not Found</h2>
-            </body>
-        </html>
-    `);
-    return res.end();
-});
+console.log(route.text);
+const server = http.createServer(route.routeHandler);
 
 server.listen(3000, () => console.log("connected"));
