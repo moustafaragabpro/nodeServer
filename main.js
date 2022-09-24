@@ -16,4 +16,8 @@ app.get('/users' , (req , res) => {
     res.end();
 })
 
+app.post('/users' , (req , res) => {
+    res.send("user created")
+})
+
 app.listen(5000) ;
